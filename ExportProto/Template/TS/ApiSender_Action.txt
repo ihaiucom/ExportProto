@@ -1,0 +1,15 @@
+
+		/**
+		 * >:cnname:<
+		>:FOREACH list:<
+		 * @param >:[0]:<  >:[3]:<
+		>:ENDFOREACH:<
+		 */
+		>:funName:<(>:args:<)
+		{
+			let req = new >:fullClassName:<();
+			>:FOREACH list:<
+			req.>:[0]:< = >:[0]:<;
+			>:ENDFOREACH:<
+			this.send(req);
+		}
