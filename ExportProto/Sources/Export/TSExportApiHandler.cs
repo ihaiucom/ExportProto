@@ -79,7 +79,7 @@ public class TSExportApiHandler
 
             foreach (var msgData in msgValues)
             {
-                string pattern = $@"{msgData.name}\s*\(.*:\s*{msgData.resFullName.Replace(".", @"\.")}\)\s*{{";
+                string pattern = $@"{msgData.name}\s*\(.*\)\s*{{";
                 Regex regex = new Regex(pattern);
                 //Console.WriteLine();
                 //Console.WriteLine();

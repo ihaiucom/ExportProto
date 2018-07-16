@@ -96,8 +96,8 @@ public class ProtoApiReader
             List<ProtoMessageData>  msgValues = module.msgs.Values;
             foreach(ProtoMessageData msg in msgValues)
             {
-                Console.WriteLine();
-                Console.WriteLine("-----------");
+                //Console.WriteLine();
+                //Console.WriteLine("-----------");
 
                 string msgname = $"\"{msg.name}\"";
 
@@ -108,12 +108,12 @@ public class ProtoApiReader
                 if (mc != null && mc.Count > 0)
                 {
                     m = mc[0];
-                    msg.cnname = m.Groups[1].ToString();
-                    Console.WriteLine(msg.cnname);
+                    msg.cnname = m.Groups[1].ToString().Replace("\n", "").Replace("\r", "");
+                    //Console.WriteLine(msg.cnname);
                 }
 
 
-                Console.WriteLine("~~~~~~~~~~~~~~~" + modulename + " " + msgname);
+                //Console.WriteLine("~~~~~~~~~~~~~~~" + modulename + " " + msgname);
                 int maxLine = msg.req.fields.Count + msg.res.fields.Count + 5;
                 foreach (var kvp in msg.req.fields)
                 {

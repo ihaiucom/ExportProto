@@ -1,10 +1,5 @@
 
-		/**
-		 * >:cnname:<
-		>:FOREACH list:<
-		 * @param >:[0]:<  >:[3]:<
-		>:ENDFOREACH:<
-		 */
+		>:note:<
 		>:funName:<(>:args:<)
 		{
 			let req = new >:fullClassName:<();

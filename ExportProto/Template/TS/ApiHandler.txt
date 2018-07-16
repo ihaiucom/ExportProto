@@ -11,7 +11,7 @@ namespace Games
 	export class >:className:< extends ProtoHandler
 	{
 	
-		moduleName: string = ProtoModuleMames.>:name:<;
+		moduleName: string = ProtoModuleNames.>:name:<;
 
 		>:FOREACH funCodeList:<
 		>:[0]:<

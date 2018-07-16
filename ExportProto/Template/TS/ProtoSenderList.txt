@@ -16,7 +16,7 @@ namespace Games
 		// 1 moduleSenderClassName
 
 		>:FOREACH apilist:<
-		static >:[0]:< = new >:[1]:<();
+		>:[0]:< = new >:[1]:<();
 		>:ENDFOREACH:<
 
 

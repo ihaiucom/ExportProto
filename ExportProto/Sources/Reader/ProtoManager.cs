@@ -33,6 +33,8 @@ public class ProtoManager
         TSExportOobHandler.Export(this);
         TSExportApiHandler.Export(this);
         TSExportApiSender.Export(this);
+
+        JsonExportGM.Export(this);
     }
 
     public void ExportGMJson()

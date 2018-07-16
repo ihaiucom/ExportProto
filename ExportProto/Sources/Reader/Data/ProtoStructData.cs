@@ -5,6 +5,7 @@ using System.Text;
 
 public class ProtoStructData: ProtoMsgActionData
 {
+    public string cnname;
     public string name;
 
     public string funName

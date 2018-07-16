@@ -116,8 +116,13 @@ public class TSExportApiSender
     private static string GenerateFunCode(ProtoMessageData data)
     {
 
+        List<string> note = new List<string>();
         List<string> args = new List<string>();
         List<object[]> list = new List<object[]>();
+        note.Add("/**");
+        note.Add($"         * {data.cnname}");
+
+
         int index = 0;
         int count = data.req.fields.Count;
         foreach (var kvp in data.req.fields)
@@ -131,9 +136,12 @@ public class TSExportApiSender
 
             list.Add(new object[] { field.fieldName, field.tsType, index >= count - 1 ? string.Empty : ",", field.cnname});
             args.Add($"{field.fieldName}: {field.tsType}");
+            note.Add($"		 * @param {field.fieldName}  {field.cnname}");
             index++;
 
         }
+
+        note.Add("         */");
 
 
         TemplateSystem template = new TemplateSystem(tplAction);
@@ -141,6 +149,7 @@ public class TSExportApiSender
         template.AddVariable("funName", data.name);
         template.AddVariable("fullClassName", data.reqFullName);
         template.AddVariable("args", String.Join(", ", args));
+        template.AddVariable("note", String.Join("\n", note));
 
         template.AddVariable("list", list.ToArray());
         string content = template.Parse();

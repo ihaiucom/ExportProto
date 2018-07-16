@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 public class ProtoStructReader
 {
@@ -50,6 +51,56 @@ public class ProtoStructReader
         }
 
 
+        ReadNote(jsonTxt);
+
+    }
+
+    private void ReadNote(string jsonTxt)
+    {
+        string pattern;
+        Regex regex;
+        MatchCollection mc;
+        Match m;
+        List<ProtoStructData> structList = structs.Values;
+        foreach (ProtoStructData structData in structList)
+        {
+
+
+            string structName = $"\"{structData.name}\"";
+            pattern = $@"{structName}\s*:\s*{{\s*//(.*)\n";
+            regex = new Regex(pattern);
+
+            mc = regex.Matches(jsonTxt);
+            if (mc != null && mc.Count > 0)
+            {
+                m = mc[0];
+                structData.cnname = m.Groups[1].ToString();
+                //Console.WriteLine(structData.cnname);
+            }
+
+            int maxLine = structData.fields.Count + 3;
+            foreach (var kvp in structData.fields)
+            {
+                string fieldname = $"\"{kvp.Value.fieldName}\"";
+                //Console.WriteLine("fieldname: " + fieldname);
+
+                pattern = $@"{structName}\s*:\s*{{[\s\S]*?{fieldname}\s*:.*//(.*)\n";
+                regex = new Regex(pattern);
+                //Console.WriteLine(pattern);
+
+                mc = regex.Matches(jsonTxt);
+                if (mc != null && mc.Count > 0)
+                {
+                    m = mc[0];
+                    if (m.ToString().Split('\n').Length <= maxLine)
+                        kvp.Value.cnname = m.Groups[1].ToString();
+
+                    //Console.WriteLine(kvp.Value.cnname);
+                    //Console.WriteLine(m.ToString().Split('\n').Length);
+                    //Console.WriteLine(m.ToString());
+                }
+            }
+        }
 
 
     }

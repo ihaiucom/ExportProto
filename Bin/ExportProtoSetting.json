@@ -5,10 +5,10 @@
   "protoFolder": "client_only,common",
   "templateDir": "../ExportProto/Template",
   "codePath": "E:/zengfeng/GamePF/Gidea-PF-Client/GamePF/src/proto",
-  "codeOutPath": "./out",
+  "codeOutPath": "E:/zengfeng/GamePF/Gidea-PF-Client/GamePF/src/proto",
   "namespaceEnum": "Proto.SE",
   "namespaceStruct": "Proto.SS",
   "namespaceApi": "Proto.API",
   "jsonServerGM": "//172.16.50.177/GamePF/ServerGM.json",
-  "jsonClientGM": "./out/ClientGM.json"
+  "jsonClientGM": "//172.16.50.177/GamePF/ClientGM.json"
 }

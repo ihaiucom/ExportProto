@@ -52,7 +52,7 @@ public class Options
     public string jsonServerGM { get; set; }
 
     // GM配置--客户端
-    [Option("jsonClientGM", Required = false, Default = "./out/ClientGM.json")]
+    [Option("jsonClientGM", Required = false, Default = "//172.16.50.177/GamePF/ClientGM.json")]
     public string jsonClientGM { get; set; }
 
 
